@@ -1,27 +1,23 @@
 import React, { Component } from 'react'
-import API from './ApiService/API'
-import Button from './Button/Button'
-import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem'
-import Modal from './Modal/Modal'
-import Loader from './Loader/Loader'
+import Searchbar from './Searchbar/Searchbar'
+import ImageGallery from './ImageGallery/ImageGallery'
 
+export default class App extends Component {
+   state = {
+   nameQuery: "",  
+ }
+ 
+ formSubmit = (nameQuery) => {  
+   this.setState ({nameQuery})
+ } 
 
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        textTransform: 'uppercase',
-        color: '#010101',
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+  render() {
+    return (
+      <div >
+        <Searchbar onSubmit={this.formSubmit} />
+        <ImageGallery imgName={this.state.nameQuery} />
+       </div>
+    )
+  }
+}
 
-export default App;
